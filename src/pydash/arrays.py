@@ -1794,7 +1794,7 @@ def sorted_last_index_of(
     """
     index = sorted_last_index(array, value) - 1
 
-    if index < len(array) and array[index] == value:
+    if 0 <= index < len(array) and array[index] == value:
         return index
     else:
         return -1

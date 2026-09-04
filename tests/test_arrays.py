@@ -656,6 +656,10 @@ def test_sorted_last_index_by(case, expected):
     [
         ([2, 3, 4, 10, 10], 10, 4),
         ([10, 10, 4, 2, 3], 11, -1),
+        # Empty array must return -1, not raise IndexError.
+        ([], 10, -1),
+        # Value lower than every element also returns -1 without indexing [-1].
+        ([2, 3, 4], 1, -1),
     ],
 )
 def test_sorted_last_index_of(array, value, expected):
