@@ -2064,7 +2064,9 @@ def truncate(
     trunc_len = len(text)
 
     if pyd.is_string(separator):
-        trunc_len = text.rfind(separator)
+        separator_index = text.rfind(separator)
+        if separator_index >= 0:
+            trunc_len = separator_index
     elif pyd.is_reg_exp(separator):
         last = None
         for match in separator.finditer(text):

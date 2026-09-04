@@ -1079,6 +1079,10 @@ def test_trim_end(case, expected):
             ("hi-diddly-ho there, neighborino", 24, "...", re.compile(",? +")),
             "hi-diddly-ho there...",
         ),
+        # A string separator that does not occur in the truncated text must not
+        # trim any additional characters; truncation falls back to the plain cut.
+        (("hello world", 10, "...", "xyz"), "hello w..."),
+        (("hello world", 8, "...", "q"), "hello..."),
         (("hi-diddly-ho there, neighborino", 30, " [...]"), "hi-diddly-ho there, neig [...]"),
         (("123456789", 9), "123456789"),
         (("123456789", 8), "12345..."),
